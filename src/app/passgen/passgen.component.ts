@@ -24,8 +24,12 @@ export default class PassgenComponent implements OnInit {
   
   private search = this.num + this.str + this.str2;
   private idle = this.search.split("");
-  private shu: any = this.shuffle(this.idle);
+  public shu: any = this.shuffle(this.idle);
   
+
+  reload() {
+    window.location.reload();
+  }
 
   // NgonInit
 
@@ -38,5 +42,6 @@ export default class PassgenComponent implements OnInit {
     
   }
 
+  
 
 }
