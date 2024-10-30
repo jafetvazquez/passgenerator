@@ -18,7 +18,7 @@ export default class PassgenComponent implements OnInit {
     return array; 
   }; 
   
-  private num: string = "octubre";
+  private num: string = "njfdbnjfj";
   private str: string = "hola";
   private str2: string = "ov";
   
@@ -37,7 +37,6 @@ export default class PassgenComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
 
-    console.log(this.shu);
     
     
   }
