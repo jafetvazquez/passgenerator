@@ -18,17 +18,22 @@ export default class PassgenComponent implements OnInit {
     return array; 
   }; 
   
-  private num: string = "njfdbnjfj";
-  private str: string = "hola";
-  private str2: string = "ov";
+  private upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  private lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
+  private numbers: string = "0123456789"
+  private speChar: string = "!@#$%^&*()_-+=<>?";
   
-  private search = this.num + this.str + this.str2;
+  private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
   private idle = this.search.split("");
   public shu: any = this.shuffle(this.idle);
   
 
   reload() {
-    window.location.reload();
+
+    const reset = this.shuffle(this.idle);
+
+    console.log(reset);
+    
   }
 
   // NgonInit
@@ -36,8 +41,7 @@ export default class PassgenComponent implements OnInit {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-
-    
+    this.reload()
     
   }
 
