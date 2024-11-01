@@ -25,12 +25,14 @@ export default class PassgenComponent implements OnInit {
   
   private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
   private idle = this.search.split("");
-  public shu: any = this.shuffle(this.idle);
+  public shu: string[] = this.shuffle(this.idle);
+  public noComas: string = this.shu.join('');
+  public len = this.noComas.length;
   
 
   reload() {
 
-    const reset = this.shuffle(this.idle);
+    const reset = this.noComas;
 
     console.log(reset);
     
