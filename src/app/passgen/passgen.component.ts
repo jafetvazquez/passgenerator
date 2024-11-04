@@ -1,40 +1,64 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-passgen',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './passgen.component.html',
   styleUrl: './passgen.component.css'
 })
 export default class PassgenComponent implements OnInit {
 
   // Define the possible characters for the password
-  private shuffle = (array: string[]) => { 
-    for (let i = array.length - 1; i > 0; i--) { 
-      const j = Math.floor(Math.random() * (i + 1)); 
-      [array[i], array[j]] = [array[j], array[i]]; 
+  private shuffle() {
+
+    let result: string = "";
+    
+    for (let i = 0; i < this.numCar; i++) { 
+
+      // crear const de string
+      const upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
+      const numbers: string = "0123456789"
+      const speChar: string = "!@#$%^&*()_-+=<>?";
+
+      // juntar strings
+      const search = upperCase + lowerCase + numbers + speChar;
+      const idle = search.split("");
+
+      //const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+      
+      const j = Math.floor(Math.random() * search.length); 
+      result += search[j];
     } 
-    return array; 
+    //return array; 
+    this.newString = result;
   }; 
+
+
+  public numCar: number = 12;
+  public newString: string = "";
+
+  public upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  public lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
+  public numbers: string = "0123456789"
+  public speChar: string = "!@#$%^&*()_-+=<>?";
   
-  private upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  private lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
-  private numbers: string = "0123456789"
-  private speChar: string = "!@#$%^&*()_-+=<>?";
-  
-  private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
+  /*private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
   private idle = this.search.split("");
   public shu: string[] = this.shuffle(this.idle);
   public noComas: string = this.shu.join('');
-  public len = this.noComas.length;
+  public len = this.noComas.length;*/
   
 
   reload() {
 
-    const reset = this.noComas;
+    const reset = this.shuffle();
+    console.log(this.newString, this.newString.length);
+    
 
-    console.log(reset);
+    return reset
     
   }
 
@@ -44,6 +68,9 @@ export default class PassgenComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.reload()
+
+    console.log(this.newString, this.newString.length);
+    
     
   }
 
