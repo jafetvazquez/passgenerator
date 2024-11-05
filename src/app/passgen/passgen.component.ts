@@ -18,10 +18,10 @@ export default class PassgenComponent implements OnInit {
     for (let i = 0; i < this.numCar; i++) { 
 
       // crear const de string
-      const upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      const lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
-      const numbers: string = "0123456789"
-      const speChar: string = "!@#$%^&*()_-+=<>?";
+      const upperCase: string = this.upperCase;
+      const lowerCase: string = this.lowerCase;
+      const numbers: string = this.numbers;
+      const speChar: string = this.speChar;
 
       // juntar strings
       const search = upperCase + lowerCase + numbers + speChar;
@@ -42,7 +42,7 @@ export default class PassgenComponent implements OnInit {
 
   public upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   public lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
-  public numbers: string = "0123456789"
+  public numbers: string = "0123456789";
   public speChar: string = "!@#$%^&*()_-+=<>?";
   
   /*private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
@@ -69,7 +69,7 @@ export default class PassgenComponent implements OnInit {
     //Add 'implements OnInit' to the class.
     this.reload()
 
-    console.log(this.newString, this.newString.length);
+    //console.log(this.newString, this.newString.length);
     
     
   }
