@@ -3,7 +3,7 @@
     <nav class="container mx-auto p-6 lg:flex lg:items-center lg:justify-between">
         <div class="flex items-center justify-between">
             <div>
-                <a class="text-2xl font-bold text-gray-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-300 lg:text-3xl" href="#">PassGen</a>
+                <a class="text-2xl font-bold text-gray-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-300 lg:text-3xl" href="https://jafet.vercel.app/">PassGen</a>
             </div>
         </div>
     </nav>
@@ -16,13 +16,20 @@
 
         <form class="pt-32 w-full space-x-4" action="">
 
-            <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[10%] border-0 mt-0 focus:outline-none" type="number" name="numCar" id="numCar" [(ngModel)]="numCar" minlength="8" value="{{ numCar }}">
+            <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[10%] border-0 mt-0 focus:outline-none" type="number" name="numCar" id="numCar" [(ngModel)]="numCar" minlength="1" maxlength="2" value="{{ numCar }}" (ngModelChange)="onChangeLength()">
 
             <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[60%] border-0 mt-0 focus:outline-none" type="text" value="{{ newString }}">
+
+            <button type="button" class="absolute translate-x-[-70%] bg-transparent py-6 rounded-2xl text-3xl w-[7%] focus:outline-none" (click)="reload()">
+                <img class="w-[40%] text-gray-500" src="https://www.svgrepo.com/show/14059/refresh.svg" alt="refresh">
+            </button>
+
 
             <button type="button" class="bg-gray-100 text-gray-900 py-8 rounded-2xl text-3xl w-[20%] border-0 mt-0 focus:outline-none cursor-pointer">
                 Copiar
             </button>
+
+            
         </form>
 
         <div>
@@ -34,8 +41,6 @@
             <input type="checkbox" name="" id="" class="text-gray-900 py-8 rounded-2xl text-3xl w-[60%] border-0 mt-0 focus:outline-none">
         </form>
 
-            
-        <button (click)="reload()" type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-1/3">Recargar Página</button>
 
     </div>
 

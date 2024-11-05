@@ -11,11 +11,11 @@ import { FormsModule } from '@angular/forms';
 export default class PassgenComponent implements OnInit {
 
   // Define the possible characters for the password
-  private shuffle() {
+  private shuffle(numCar: number): any {
 
     let result: string = "";
     
-    for (let i = 0; i < this.numCar; i++) { 
+    for (let i = 0; i < numCar; i++) { 
 
       // crear const de string
       const upperCase: string = this.upperCase;
@@ -51,10 +51,19 @@ export default class PassgenComponent implements OnInit {
   public noComas: string = this.shu.join('');
   public len = this.noComas.length;*/
   
+  onChangeLength(): void{
+    if(this.numCar > 0){
+      this.newString = this.shuffle(this.numCar);
+    }else{
+      this.newString = '';
+    }
+
+    this.reload();
+  }
 
   reload() {
 
-    const reset = this.shuffle();
+    const reset = this.shuffle(this.numCar);
     console.log(this.newString, this.newString.length);
     
 

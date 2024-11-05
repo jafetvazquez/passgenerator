@@ -5,10 +5,29 @@
 
 .fondo {
     /* Color de fondo con opacidad */
-    position: relative;
-    background-image: url('./app/img/lett.webp');
-    background-size: cover; /* O 'contain' dependiendo de tu necesidad */
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh; /* Ajusta según tus necesidades */
-  }
+  position: relative;
+  background-image: url('./app/img/lett.webp');
+  background-size: cover; /* O 'contain' dependiendo de tu necesidad */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh; /* Ajusta según tus necesidades */
+
+}
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.input-wrapper input {
+  padding-right: 40px;
+}
+
+.input-wrapper button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  
+  cursor: pointer;
+}
