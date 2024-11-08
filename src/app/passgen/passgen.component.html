@@ -21,28 +21,33 @@
 
             <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[60%] border-0 mt-0 focus:outline-none" type="text" value="{{ newString }}">
     
-            <button type="button" class="absolute translate-x-[-80%] lg:translate-y-0 md:translate-y-3.5 bg-transparent text-transparent py-6 w-[8%] focus:outline-none" (click)="reload()">
+            <button type="button" class="absolute translate-x-[-80%] xl:translate-y-0 bg-transparent text-transparent py-6 w-[8%] focus:outline-none" (click)="reload()">
                 <img class="w-[40%] text-gray-500" src="https://www.svgrepo.com/show/14059/refresh.svg" alt="refresh">
             </button>
-            
-
 
             <button type="button" class="bg-gray-100 text-gray-900 py-8 rounded-2xl text-3xl w-[20%] border-0 mt-0 focus:outline-none cursor-pointer">
                 Copiar
             </button>
 
+            <div class="w-full pt-10 items-center space-x-4">
+
+                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue" (change)="onCheckUpper()">
+                <Label class="text-xl text-gray-200">A-Z</Label>
+
+                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue2" (change)="onCheckLower()">
+                <Label class="text-xl text-gray-200">a-z</Label>
+
+                <input type="checkbox" class="size-4">
+                <Label class="text-xl text-gray-200">0-9</Label>
+                
+                <input type="checkbox" class="size-4">
+                <input type="text" class="w-[20%] py-1 text-lg rounded-lg" [(ngModel)]="speChar" value="{{ speChar }}">
+
+            </div>
+
+
             
         </div>
-
-        <div>
-            
-        </div>
-
-
-        <form class="pt-32" action="">
-            <input type="checkbox" name="" id="" class="text-gray-900 py-8 rounded-2xl text-3xl w-[60%] border-0 mt-0 focus:outline-none">
-        </form>
-
 
     </div>
 

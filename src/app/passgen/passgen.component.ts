@@ -44,6 +44,9 @@ export default class PassgenComponent implements OnInit {
   public lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
   public numbers: string = "0123456789";
   public speChar: string = "!@#$%^&*()_-+=<>?";
+
+  public checkboxValue: boolean = false;
+  public checkboxValue2: boolean = false;
   
   /*private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
   private idle = this.search.split("");
@@ -61,10 +64,21 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
+  onCheckUpper(){
+    this.upperCase = this.upperCase.includes(this.upperCase)? '' : this.upperCase;
+    this.reload();
+  }
+
+  onCheckLower(){
+    this.lowerCase = this.lowerCase.includes(this.lowerCase)? '' : this.lowerCase;
+    this.reload();
+  }
+
   reload() {
 
     const reset = this.shuffle(this.numCar);
     console.log(this.newString, this.newString.length);
+    console.log(this.speChar);
     
 
     return reset
