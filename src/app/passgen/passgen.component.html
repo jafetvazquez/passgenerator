@@ -16,7 +16,7 @@
 
         <div class="pt-32 w-full space-x-4 relative" action="">
 
-            <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[10%] border-0 mt-0 focus:outline-none" type="number" name="numCar" id="numCar" [(ngModel)]="numCar" minlength="1" maxlength="2" value="{{ numCar }}" (ngModelChange)="onChangeLength()">
+            <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[10%] border-0 mt-0 focus:outline-none" type="number" name="numCar" id="numCar" [(ngModel)]="numCar" minlength="1" maxlength="50" value="{{ numCar }}" (ngModelChange)="onChangeLength()">
 
 
             <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[60%] border-0 mt-0 focus:outline-none" type="text" value="{{ newString }}">
@@ -25,7 +25,7 @@
                 <img class="w-[40%] text-gray-500" src="https://www.svgrepo.com/show/14059/refresh.svg" alt="refresh">
             </button>
 
-            <button type="button" class="bg-gray-100 text-gray-900 py-8 rounded-2xl text-3xl w-[20%] border-0 mt-0 focus:outline-none cursor-pointer">
+            <button type="button" class="bg-gray-100 text-gray-900 py-8 rounded-2xl text-3xl w-[20%] border-0 mt-0 focus:outline-none cursor-pointer" (click)="copyPass()">
                 Copiar
             </button>
 

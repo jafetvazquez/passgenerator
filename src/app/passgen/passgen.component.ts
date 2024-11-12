@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Clipboard } from '@angular/cdk/clipboard';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-passgen',
@@ -9,6 +11,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './passgen.component.css'
 })
 export default class PassgenComponent implements OnInit {
+
+  constructor(private clipboard: Clipboard) {}
 
   // Define the possible characters for the password
   private shuffle(numCar: number): any {
@@ -36,10 +40,11 @@ export default class PassgenComponent implements OnInit {
     this.newString = result;
   }; 
 
-
+  // Number of characters and void String
   public numCar: number = 12;
   public newString: string = "";
 
+  // Define the characters for the password
   public upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   public lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
   public numbers: string = "0123456789";
@@ -50,13 +55,16 @@ export default class PassgenComponent implements OnInit {
   public numbersAgain: string = "0123456789";
   public speCharAgain: string = "!@#$%&*()_-+=<>?";
 
+  // values of checkboxes
   public checkboxValue: boolean = true;
   public checkboxValue2: boolean = true;
   public checkboxValue3: boolean = true;
   public checkboxValue4: boolean = true;
 
+  // Disable input of special characters
   public isDisabled: boolean = false;
 
+  // Length of the checkboxes
   private getSelectedCount(): number {
     return [
       this.checkboxValue,
@@ -66,6 +74,7 @@ export default class PassgenComponent implements OnInit {
     ].filter(selected => selected).length;
   }
 
+  // Funtion to change the value of checkbox if the others are disabled
   onBoxChange(): void{
     const selectedBox = this.getSelectedCount();
 
@@ -83,15 +92,22 @@ export default class PassgenComponent implements OnInit {
     
   }
 
-  /*private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
-  private idle = this.search.split("");
-  public shu: string[] = this.shuffle(this.idle);
-  public noComas: string = this.shu.join('');
-  public len = this.noComas.length;*/
-  
+  // Funtion to change de password if the number of characters change
   onChangeLength(): void{
+
+    if(this.numCar === 0 || this.numCar === null || this.numCar < 0){
+      this.msgAlert('error', 'Ingrese un número válido');
+    }
+
     if(this.numCar > 0){
       this.newString = this.shuffle(this.numCar);
+
+      if(this.numCar > 50){
+        this.msgAlert('error', 'Máximo 50 caracteres');
+        this.newString = this.newString.substring(0, 50);
+        this.reload();
+      }
+
     }else{
       this.newString = '';
     }
@@ -99,10 +115,7 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
-  onChangeSpeChar(): void{
-
-  }
-
+  // Funtion to disable the Uppercase checkbox
   onCheckUpper(){
 
     if(this.checkboxValue === false){
@@ -115,6 +128,7 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
+  // function to disable the lowercase chackbox
   onCheckLower(){
 
     if(this.checkboxValue2 === false){
@@ -126,6 +140,7 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
+  // function to disable the number characters checkbox
   onCheckNumber(){
 
     if(this.checkboxValue3 === false){
@@ -137,6 +152,7 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
+  // function to disable the special characters checkbox
   onCheckSpeChar(){
     
     if(this.checkboxValue4 === false){
@@ -150,6 +166,7 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
+  // funtion to reload the possword generator
   reload() {
 
     const reset = this.shuffle(this.numCar);
@@ -165,16 +182,44 @@ export default class PassgenComponent implements OnInit {
 
   // NgonInit
 
+  // ngOnInit to init the app with a password generated
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.reload();
+    //this.msgAlert('error', 'error')
 
     //console.log(this.newString, this.newString.length);
     
     
   }
 
-  
+  // function to copy the result of the password generated
+  copyPass(): void{
+    this.clipboard.copy(this.newString);
+    this.msgAlert('success', 'Password copiado correctamente!');
+  }
+
+  // funtion to create an alert
+  msgAlert = (icon: any, title: any) => {
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: icon,
+      title: title
+    })
+
+  }
 
 }
