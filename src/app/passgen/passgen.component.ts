@@ -63,6 +63,7 @@ export default class PassgenComponent implements OnInit {
 
   // Disable input of special characters
   public isDisabled: boolean = false;
+  public isCheckDis: boolean = false;
 
   // Length of the checkboxes
   private getSelectedCount(): number {
@@ -80,9 +81,14 @@ export default class PassgenComponent implements OnInit {
 
     if(selectedBox === 0){
       this.checkboxValue = true;
+      this.isCheckDis = true;
       this.checkboxValue2 = false;
       this.checkboxValue3 = false;
       this.checkboxValue4 = false;
+
+      this.msgAlert('error', 'Mínimo un checkbox debe estar activo');
+    }else if(selectedBox > 0){
+      this.isCheckDis = false;
     }
 
     this.onCheckUpper();
@@ -102,9 +108,9 @@ export default class PassgenComponent implements OnInit {
     if(this.numCar > 0){
       this.newString = this.shuffle(this.numCar);
 
-      if(this.numCar > 50){
-        this.msgAlert('error', 'Máximo 50 caracteres');
-        this.newString = this.newString.substring(0, 50);
+      if(this.numCar > 40){
+        this.msgAlert('error', 'Máximo 40 caracteres');
+        this.newString = this.newString.substring(0, 40);
         this.reload();
       }
 
@@ -197,7 +203,7 @@ export default class PassgenComponent implements OnInit {
   // function to copy the result of the password generated
   copyPass(): void{
     this.clipboard.copy(this.newString);
-    this.msgAlert('success', 'Password copiado correctamente!');
+    this.msgAlert('success', 'Password copiado!!!');
   }
 
   // funtion to create an alert

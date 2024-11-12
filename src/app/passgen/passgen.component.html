@@ -31,7 +31,7 @@
 
             <div class="w-full pt-10 items-center space-x-4">
                 
-                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue" (change)="onCheckUpper(); onBoxChange()">
+                <input type="checkbox" class="size-4" [disabled]="isCheckDis" [(ngModel)]="checkboxValue" (change)="onCheckUpper(); onBoxChange()">
                 <Label class="text-xl text-gray-200">A-Z</Label>
 
                 <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue2" (change)="onCheckLower(); onBoxChange()">
