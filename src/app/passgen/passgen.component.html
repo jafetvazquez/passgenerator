@@ -31,17 +31,17 @@
 
             <div class="w-full pt-10 items-center space-x-4">
                 
-                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue" (change)="onCheckUpper()">
+                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue" (change)="onCheckUpper(); onBoxChange()">
                 <Label class="text-xl text-gray-200">A-Z</Label>
 
-                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue2" (change)="onCheckLower()">
+                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue2" (change)="onCheckLower(); onBoxChange()">
                 <Label class="text-xl text-gray-200">a-z</Label>
 
-                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue3" (change)="onCheckNumber()">
+                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue3" (change)="onCheckNumber(); onBoxChange()">
                 <Label class="text-xl text-gray-200">0-9</Label>
                 
-                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue4" (change)="onCheckSpeChar()">
-                <input type="text" class="w-[20%] py-1 text-lg rounded-lg" [minlength]="4" [(ngModel)]="speChar" value="{{ speChar }}">
+                <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue4" (change)="onCheckSpeChar(); onBoxChange()">
+                <input type="text" class="w-[20%] py-1 text-lg rounded-lg" id="specialChars" [disabled]="isDisabled" placeholder="{{ speCharAgain }}" [minlength]="4" [(ngModel)]="speChar" value="{{ speChar }}">
                 
 
 

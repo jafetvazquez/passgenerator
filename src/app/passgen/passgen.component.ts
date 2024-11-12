@@ -43,12 +43,19 @@ export default class PassgenComponent implements OnInit {
   public upperCase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   public lowerCase: string = "abcdefghijklmnopqrstuvwxyz";
   public numbers: string = "0123456789";
-  public speChar: string = "!@#$%^&*()_-+=<>?";
+  public speChar: string = "!@#$%&*()_-+=<>?";
+
+  public upperCaseAgain: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  public lowerCaseAgain: string = "abcdefghijklmnopqrstuvwxyz";
+  public numbersAgain: string = "0123456789";
+  public speCharAgain: string = "!@#$%&*()_-+=<>?";
 
   public checkboxValue: boolean = true;
   public checkboxValue2: boolean = true;
   public checkboxValue3: boolean = true;
   public checkboxValue4: boolean = true;
+
+  public isDisabled: boolean = false;
 
   private getSelectedCount(): number {
     return [
@@ -64,7 +71,16 @@ export default class PassgenComponent implements OnInit {
 
     if(selectedBox === 0){
       this.checkboxValue = true;
+      this.checkboxValue2 = false;
+      this.checkboxValue3 = false;
+      this.checkboxValue4 = false;
     }
+
+    this.onCheckUpper();
+    this.reload();
+
+    console.log(selectedBox);
+    
   }
 
   /*private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
@@ -88,44 +104,71 @@ export default class PassgenComponent implements OnInit {
   }
 
   onCheckUpper(){
-    this.upperCase = this.upperCase.includes(this.upperCase)? '' : this.upperCase;
+
+    if(this.checkboxValue === false){
+      this.upperCase = this.upperCase.includes(this.upperCase)? '' : this.upperCase;
+    }else{
+      this.upperCase = this.upperCaseAgain;
+    }
+
     //this.onBoxChange();
     this.reload();
   }
 
   onCheckLower(){
-    this.lowerCase = this.lowerCase.includes(this.lowerCase)? '' : this.lowerCase;
+
+    if(this.checkboxValue2 === false){
+      this.lowerCase = this.lowerCase.includes(this.lowerCase)? '' : this.lowerCase;
+    }else{
+      this.lowerCase = this.lowerCaseAgain;
+    }
+
     this.reload();
   }
 
   onCheckNumber(){
-    this.numbers = this.numbers.includes(this.numbers)? '' : this.numbers;
+
+    if(this.checkboxValue3 === false){
+      this.numbers = this.numbers.includes(this.numbers)? '' : this.numbers;
+    }else{
+      this.numbers = this.numbersAgain;
+    }
+
     this.reload();
   }
 
   onCheckSpeChar(){
-    const specialChar = this.speChar;
-    specialChar.includes(specialChar)? '' : this.speChar;
+    
+    if(this.checkboxValue4 === false){
+      this.speChar = this.speChar.includes(this.speChar)? '' : this.speChar;
+      this.isDisabled = true;
+    }else{
+      this.isDisabled = false;
+      this.speChar = this.speCharAgain;
+    }
+
     this.reload();
   }
 
   reload() {
 
     const reset = this.shuffle(this.numCar);
-    console.log(this.newString, this.newString.length);
-    console.log(this.speChar);
+    //console.log(this.newString, this.newString.length);
+    //console.log(this.speChar);
     
 
     return reset
     
   }
 
+
+
   // NgonInit
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.reload()
+    this.reload();
 
     //console.log(this.newString, this.newString.length);
     
