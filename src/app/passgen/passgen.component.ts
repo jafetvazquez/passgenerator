@@ -45,9 +45,28 @@ export default class PassgenComponent implements OnInit {
   public numbers: string = "0123456789";
   public speChar: string = "!@#$%^&*()_-+=<>?";
 
-  public checkboxValue: boolean = false;
-  public checkboxValue2: boolean = false;
-  
+  public checkboxValue: boolean = true;
+  public checkboxValue2: boolean = true;
+  public checkboxValue3: boolean = true;
+  public checkboxValue4: boolean = true;
+
+  private getSelectedCount(): number {
+    return [
+      this.checkboxValue,
+      this.checkboxValue2,
+      this.checkboxValue3,
+      this.checkboxValue4,
+    ].filter(selected => selected).length;
+  }
+
+  onBoxChange(): void{
+    const selectedBox = this.getSelectedCount();
+
+    if(selectedBox === 0){
+      this.checkboxValue = true;
+    }
+  }
+
   /*private search = this.upperCase + this.lowerCase + this.numbers + this.speChar;
   private idle = this.search.split("");
   public shu: string[] = this.shuffle(this.idle);
@@ -64,13 +83,29 @@ export default class PassgenComponent implements OnInit {
     this.reload();
   }
 
+  onChangeSpeChar(): void{
+
+  }
+
   onCheckUpper(){
     this.upperCase = this.upperCase.includes(this.upperCase)? '' : this.upperCase;
+    //this.onBoxChange();
     this.reload();
   }
 
   onCheckLower(){
     this.lowerCase = this.lowerCase.includes(this.lowerCase)? '' : this.lowerCase;
+    this.reload();
+  }
+
+  onCheckNumber(){
+    this.numbers = this.numbers.includes(this.numbers)? '' : this.numbers;
+    this.reload();
+  }
+
+  onCheckSpeChar(){
+    const specialChar = this.speChar;
+    specialChar.includes(specialChar)? '' : this.speChar;
     this.reload();
   }
 
