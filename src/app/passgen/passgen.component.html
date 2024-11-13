@@ -14,22 +14,21 @@
             <h1 class="text-3xl font-bold text-gray-200 dark:text-white lg:text-4xl">FREE PASSWORD GENERATOR</h1>
         </div>
 
-        <div class="pt-32 w-full space-x-4 relative" action="">
+        <div class="pt-32 w-full md:space-x-4 relative sm:space-x-2 sm:space-y-4">
 
-            <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[10%] border-0 mt-0 focus:outline-none" type="number" name="numCar" id="numCar" [(ngModel)]="numCar" minlength="1" maxlength="50" value="{{ numCar }}" (ngModelChange)="onChangeLength()">
+            <input class="text-gray-900 md:py-8 rounded-2xl text-3xl md:w-[10%] border-0 mt-0 focus:outline-none sm:w-[30%] sm:py-6" type="number" name="numCar" id="numCar" [(ngModel)]="numCar" minlength="1" maxlength="50" value="{{ numCar }}" (ngModelChange)="onChangeLength()">
 
+            <input class="text-gray-900 md:py-8 rounded-2xl text-3xl md:w-[60%] border-0 mt-0 focus:outline-none sm:w-full sm:py-6 md:text-left sm:text-center" (click)="copyPass()" type="text" value="{{ newString }}" readonly>
 
-            <input class="text-gray-900 py-8 rounded-2xl text-3xl w-[60%] border-0 mt-0 focus:outline-none" type="text" value="{{ newString }}" readonly>
-    
-            <button type="button" class="absolute translate-x-[-80%] xl:translate-y-0 bg-transparent text-transparent py-6 w-[8%] focus:outline-none" (click)="reload()">
+            <button type="button" class="absolute translate-x-[-80%] xl:translate-y-0 bg-transparent text-transparent py-6 md:w-[8%] focus:outline-none md:inline sm:hidden" (click)="reload()">
                 <img class="w-[40%] text-gray-500" src="https://www.svgrepo.com/show/14059/refresh.svg" alt="refresh">
             </button>
 
-            <button type="button" class="bg-gray-100 text-gray-900 py-8 rounded-2xl text-3xl w-[20%] border-0 mt-0 focus:outline-none cursor-pointer" (click)="copyPass()">
+            <button type="button" class="bg-gray-100 text-gray-900 md:py-8 rounded-2xl text-3xl md:w-[20%] border-0 mt-0 focus:outline-none cursor-pointer sm:w-[50%] sm:py-6" (click)="copyPass()">
                 Copiar
             </button>
 
-            <div class="w-full pt-10 items-center space-x-4">
+            <div class="w-full pt-10 items-center md:space-x-4 sm:space-x-2 space-y-2">
                 
                 <input type="checkbox" class="size-4" [disabled]="isCheckDis" [(ngModel)]="checkboxValue" (change)="onCheckUpper(); onBoxChange()">
                 <Label class="text-xl text-gray-200">A-Z</Label>
@@ -41,9 +40,7 @@
                 <Label class="text-xl text-gray-200">0-9</Label>
                 
                 <input type="checkbox" class="size-4" [(ngModel)]="checkboxValue4" (change)="onCheckSpeChar(); onBoxChange()">
-                <input type="text" class="w-[20%] py-1 text-lg rounded-lg" id="specialChars" [disabled]="isDisabled" placeholder="{{ speCharAgain }}" [minlength]="4" [(ngModel)]="speChar" value="{{ speChar }}">
-                
-
+                <input type="text" class="md:w-[20%] y-1 text-lg rounded-lg sm:w-[50%]" id="specialChars" [disabled]="isDisabled" placeholder="{{ speCharAgain }}" [minlength]="4" [(ngModel)]="speChar" value="{{ speChar }}">
 
             </div>
 
