@@ -94,7 +94,7 @@ export default class PassgenComponent implements OnInit {
     this.onCheckUpper();
     this.reload();
 
-    console.log(selectedBox);
+    //console.log(selectedBox);
     
   }
 
