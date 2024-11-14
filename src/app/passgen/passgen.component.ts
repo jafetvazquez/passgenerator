@@ -228,4 +228,14 @@ export default class PassgenComponent implements OnInit {
 
   }
 
+
+  // functions to redirect
+  redirectToGit(): void {
+    window.open('https://github.com/jafetvazquez/passgenerator', '_blank')
+  }
+
+  redirectToWebsite(): void {
+    window.open('https://jafet.vercel.app/', '_blank')
+  }
+
 }
